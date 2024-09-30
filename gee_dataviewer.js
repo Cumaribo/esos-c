@@ -1,14 +1,14 @@
 var datasets = {
     '(*clear*)': '',
-    'cog_epf_gap.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_gap.tif', 0, 18],
-    'cog_epf_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_natural_habitats.tif', 0, 40],
-    'cog_farmersincome_gap.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_gap.tif', 0, 2600],
-    'cog_farmersincome_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_natural_habitats.tif', 0, 2600],
-    'cog_recreation_capacity_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_capacity_std.tif', 0, 1],
-    'cog_recreation_demand_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_demand_std.tif', 0, 0.1],
-    'cog_recreation_provision_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_provision_std.tif', 0, 1],
-    'cog_water_capacity_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_water_capacity_std.tif', 0, 0.5],
-    'cog_water_demand_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_water_demand_std.tif', 0, 0.1],
+    'Epf gap': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_gap.tif', 0, 18],
+    'Epf natural habitats': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_natural_habitats.tif', 0, 40],
+    'Farmersincome gap': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_gap.tif', 0, 2600],
+    'Farmersincome natural habitats': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_natural_habitats.tif', 0, 2600],
+    'Recreation capacity std': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_capacity_std.tif', 0, 1],
+    'Recreation demand std': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_demand_std.tif', 0, 0.1],
+    'Recreation provision std': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_provision_std.tif', 0, 1],
+    'Water capacity std': ['gs://ecoshard-root/esos-c/2024_09_29/cog_water_capacity_std.tif', 0, 0.5],
+    'Water demand std': ['gs://ecoshard-root/esos-c/2024_09_29/cog_water_demand_std.tif', 0, 0.1],
 };
 
 
