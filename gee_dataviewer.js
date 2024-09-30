@@ -1,7 +1,7 @@
 var datasets = {
     '(*clear*)': '',
     'cog_epf_gap.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_gap.tif', 0, 18],
-    'cog_epf_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_natural_habitats.tif', 0, 18],
+    'cog_epf_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_natural_habitats.tif', 1, 11],
     'cog_farmersincome_gap.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_gap.tif', 1, 11],
     'cog_farmersincome_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_natural_habitats.tif', 1, 11],
     'cog_recreation_capacity_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_capacity_std.tif', 1, 11],
@@ -314,7 +314,11 @@ panel_list.forEach(function (panel_array) {
         });
         ee.data.computeValue(point_sample, function (val) {
           if (val.features.length > 0) {
-            active_context.point_val.setValue(val.features[0].properties.mean);
+            console.log(val);
+            var properties = val.features[0].properties;
+            var firstKey = Object.keys(properties)[0];
+            var firstValue = properties[firstKey];
+            active_context.point_val.setValue(firstValue);
             if (active_context.last_point_layer !== null) {
               active_context.map.remove(active_context.last_point_layer);
             }
