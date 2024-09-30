@@ -1,14 +1,14 @@
 var datasets = {
     '(*clear*)': '',
     'cog_epf_gap.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_gap.tif', 0, 18],
-    'cog_epf_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_natural_habitats.tif', 1, 11],
-    'cog_farmersincome_gap.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_gap.tif', 1, 11],
-    'cog_farmersincome_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_natural_habitats.tif', 1, 11],
-    'cog_recreation_capacity_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_capacity_std.tif', 1, 11],
-    'cog_recreation_demand_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_demand_std.tif', 1, 11],
-    'cog_recreation_provision_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_provision_std.tif', 1, 11],
-    'cog_water_capacity_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_water_capacity_std.tif', 1, 11],
-    'cog_water_demand_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_water_demand_std.tif', 1, 11],
+    'cog_epf_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_epf_natural_habitats.tif', 0, 40],
+    'cog_farmersincome_gap.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_gap.tif', 0, 2600],
+    'cog_farmersincome_natural_habitats.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_farmersincome_natural_habitats.tif', 0, 2600],
+    'cog_recreation_capacity_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_capacity_std.tif', 0, 1],
+    'cog_recreation_demand_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_demand_std.tif', 0, 0.1],
+    'cog_recreation_provision_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_recreation_provision_std.tif', 0, 1],
+    'cog_water_capacity_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_water_capacity_std.tif', 0, 0.5],
+    'cog_water_demand_std.tif': ['gs://ecoshard-root/esos-c/2024_09_29/cog_water_demand_std.tif', 0, 0.1],
 };
 
 
@@ -187,16 +187,28 @@ var panel_list = [];
         self.setDisabled(true);
         var base_label = self.getLabel();
         self.setLabel('Detecting...');
-        var mean_reducer = ee.Reducer.percentile([10, 90], ['p10', 'p90']);
+        var mean_reducer = ee.Reducer.percentile([10, 90]);
         var meanDictionary = active_context.raster.reduceRegion({
           reducer: mean_reducer,
           geometry: active_context.map.getBounds(true),
           bestEffort: true,
         });
+
         ee.data.computeValue(meanDictionary, function (val) {
-          active_context.min_val.setValue(val['mean_p10'], false);
-          active_context.max_val.setValue(val['mean_p90'], true);
-          self.setLabel(base_label)
+          var keys = Object.keys(val);
+          var p10_key, p90_key;
+            for (var i = 0; i < keys.length; i++) {
+              var key = String(keys[i]);  // Ensure the key is treated as a string
+              if (key.slice(-4) === '_p10') {  // Check if the key ends with '_p10'
+                p10_key = key;
+              }
+              if (key.slice(-4) === '_p90') {  // Check if the key ends with '_p90'
+                p90_key = key;
+              }
+            }
+          active_context.min_val.setValue(val[p10_key], false);
+          active_context.max_val.setValue(val[p90_key], true);
+          self.setLabel(base_label);
           self.setDisabled(false);
         });
       });
@@ -309,12 +321,10 @@ panel_list.forEach(function (panel_array) {
         active_context.point_val.setValue('sampling...')
         var point_sample = active_context.raster.sampleRegions({
           collection: point,
-          //scale: 10,
-          //geometries: true
         });
         ee.data.computeValue(point_sample, function (val) {
           if (val.features.length > 0) {
-            console.log(val);
+            // don't know what the property is called but know there is only 1
             var properties = val.features[0].properties;
             var firstKey = Object.keys(properties)[0];
             var firstValue = properties[firstKey];
