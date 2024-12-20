@@ -1,4 +1,4 @@
-# Container for STAC API manager
+# Container ESOS-C model runs
 FROM ubuntu:jammy
 
 RUN apt-get update -qq && \
@@ -30,6 +30,8 @@ RUN pip3 install \
     pyproj==3.6.0 \
     cython \
     psutil \
+    numpy \
+    scipy \
     numexpr
 
 RUN git clone https://github.com/springinnovate/ecoshard.git /usr/local/ecoshard && \

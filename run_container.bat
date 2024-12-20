@@ -1,7 +1,7 @@
-@echo off
+@echo on
 set "IMAGE_NAME=esoc_c_models"
 set "WORKDIR=/usr/local/esoc_c_models"
-
+exit
 docker build --build-arg WORKDIR=%WORKDIR% -t %IMAGE_NAME% .
 
 if errorlevel 1 (
