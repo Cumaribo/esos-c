@@ -24,15 +24,7 @@ RUN git clone https://github.com/springinnovate/people_protected_by_coastal_habi
 RUN git clone https://github.com/springinnovate/distance-to-hab-with-friction ${WORKDIR}/distance-to-hab-with-friction
 RUN git clone https://github.com/springinnovate/pollination_sufficiency ${WORKDIR}/pollination_sufficiency
 
-RUN pip3 install \
-    geopandas \
-    shapely \
-    pyproj \
-    cython \
-    psutil \
-    scipy \
-    requests \
-    numexpr
+RUN pip3 install cython
 
 RUN git clone https://github.com/springinnovate/ecoshard.git /usr/local/ecoshard && \
     cd /usr/local/ecoshard && \
@@ -42,6 +34,14 @@ RUN git clone https://github.com/springinnovate/inspring.git /usr/local/inspring
     cd /usr/local/inspring && \
     pip3 install .
 
+RUN pip3 install \
+    geopandas \
+    shapely \
+    pyproj \
+    psutil \
+    scipy \
+    requests \
+    numexpr
 
 # Create the data directory
 RUN mkdir -p ${WORKDIR}/data
