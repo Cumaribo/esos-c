@@ -13,6 +13,7 @@ RUN apt-get update -qq && \
     gdal-bin \
     python3-gdal
 
+ARG WORKDIR=/usr/local/esoc_c_models
 ENV WORKDIR=${WORKDIR}
 
 RUN git clone https://github.com/springinnovate/swy_global.git ${WORKDIR}/swy_global
@@ -24,19 +25,23 @@ RUN git clone https://github.com/springinnovate/distance-to-hab-with-friction ${
 RUN git clone https://github.com/springinnovate/pollination_sufficiency ${WORKDIR}/pollination_sufficiency
 
 RUN pip3 install \
-    geopandas==0.13.2 \
-    pandas==2.0.3 \
-    shapely==2.0.1 \
-    pyproj==3.6.0 \
+    geopandas \
+    shapely \
+    pyproj \
     cython \
     psutil \
-    numpy \
     scipy \
+    requests \
     numexpr
 
 RUN git clone https://github.com/springinnovate/ecoshard.git /usr/local/ecoshard && \
     cd /usr/local/ecoshard && \
     pip3 install .
+
+RUN git clone https://github.com/springinnovate/inspring.git /usr/local/inspring && \
+    cd /usr/local/inspring && \
+    pip3 install .
+
 
 # Create the data directory
 RUN mkdir -p ${WORKDIR}/data
