@@ -1,8 +1,6 @@
 # Container for STAC API manager
 FROM ubuntu:jammy
 
-ARG WORKDIR=/usr/local/esos-c-models
-
 RUN apt-get update -qq && \
     apt-get install -y \
     emacs \
@@ -15,6 +13,8 @@ RUN apt-get update -qq && \
     gdal-bin \
     python3-gdal
 
+ENV WORKDIR=${WORKDIR}
+
 RUN git clone https://github.com/springinnovate/swy_global.git ${WORKDIR}/swy_global
 RUN git clone https://github.com/springinnovate/ndr_sdr_global.git ${WORKDIR}/ndr_sdr_global
 RUN git clone https://github.com/springinnovate/downstream-beneficiaries.git ${WORKDIR}/downstream-beneficiaries
@@ -23,9 +23,18 @@ RUN git clone https://github.com/springinnovate/people_protected_by_coastal_habi
 RUN git clone https://github.com/springinnovate/distance-to-hab-with-friction ${WORKDIR}/distance-to-hab-with-friction
 RUN git clone https://github.com/springinnovate/pollination_sufficiency ${WORKDIR}/pollination_sufficiency
 
-COPY requirements.txt ${WORKDIR}
-RUN pip3 install -r requirements.txt
+RUN pip3 install \
+    geopandas==0.13.2 \
+    pandas==2.0.3 \
+    shapely==2.0.1 \
+    pyproj==3.6.0 \
+    cython \
+    psutil \
+    numexpr
 
+RUN git clone https://github.com/springinnovate/ecoshard.git /usr/local/ecoshard && \
+    cd /usr/local/ecoshard && \
+    pip3 install .
 
 # Create the data directory
 RUN mkdir -p ${WORKDIR}/data
