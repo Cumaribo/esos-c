@@ -54,8 +54,6 @@ When running a model, input data should be provided via a local directory. This 
 
 ## Usage
 
-To run a model, provide the script path and any required input arguments. Example:
+To run a model, provide the script path and any required input arguments. Example, to see the command line arguments for the SWY model run this command:
 
-`./run_container.bat /usr/local/esoc_c_models/swy_global/run_swy_global.py --help`
-
-Will show you the command line arguments to run the `run_swy_global.py` script.
+`run_container.bat /usr/local/esoc_c_models/swy_global/run_swy_global.py --help`
