@@ -2,6 +2,11 @@
 
 This repository provides a Docker-based environment to run various ESOC models developed by SPRING and the Natural Capital Project.
 
+
+## Prerequisites
+
+- Ensure you have [Docker](https://www.docker.com/products/docker-desktop/)installed on your system.
+
 ---
 
 ## Cloned Repositories and Models
@@ -35,12 +40,6 @@ The following models are included and found in the given local paths of the cont
 7. **Pollination Sufficiency**
    * Path: `/usr/local/esoc_c_models/pollination_sufficiency`
    * Repository: [Pollination Sufficiency Repository](https://github.com/springinnovate/pollination_sufficiency)
-
----
-
-## Prerequisites
-
-- Ensure you have **Docker** installed on your system.
 
 ---
 
