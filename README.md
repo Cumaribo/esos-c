@@ -9,32 +9,32 @@ This repository provides a Docker-based environment to run various ESOC models d
 The following models are included and found in the given local paths of the container:
 
 1. **SWY Global**
-   Path: `/usr/local/esoc_c_models/swy_global`
-   Repository: [SWY Global Repository](https://github.com/springinnovate/swy_global)
+   * Path: `/usr/local/esoc_c_models/swy_global`
+   * Repository: [SWY Global Repository](https://github.com/springinnovate/swy_global)
 
 2. **NDR & SDR Global**
-   Path: `/usr/local/esoc_c_models/ndr_sdr_global`
-   Repository: [NDR & SDR Global Repository](https://github.com/springinnovate/ndr_sdr_global)
+   * Path: `/usr/local/esoc_c_models/ndr_sdr_global`
+   * Repository: [NDR & SDR Global Repository](https://github.com/springinnovate/ndr_sdr_global)
 
 3. **Downstream Beneficiaries**
-   Path: `/usr/local/esoc_c_models/downstream-beneficiaries`
-   Repository: [Downstream Beneficiaries Repository](https://github.com/springinnovate/downstream-beneficiaries)
+   * Path: `/usr/local/esoc_c_models/downstream-beneficiaries`
+   * Repository: [Downstream Beneficiaries Repository](https://github.com/springinnovate/downstream-beneficiaries)
 
 4. **Coastal Risk Reduction**
-   Path: `/usr/local/esoc_c_models/coastal_risk_reduction`
-   Repository: [Coastal Risk Reduction Repository](https://github.com/springinnovate/coastal_risk_reduction)
+   * Path: `/usr/local/esoc_c_models/coastal_risk_reduction`
+   * Repository: [Coastal Risk Reduction Repository](https://github.com/springinnovate/coastal_risk_reduction)
 
 5. **People Protected by Coastal Habitat**
-   Path: `/usr/local/esoc_c_models/people_protected_by_coastal_habitat`
-   Repository: [People Protected by Coastal Habitat Repository](https://github.com/springinnovate/people_protected_by_coastal_habitat)
+   * Path: `/usr/local/esoc_c_models/people_protected_by_coastal_habitat`
+   * Repository: [People Protected by Coastal Habitat Repository](https://github.com/springinnovate/people_protected_by_coastal_habitat)
 
 6. **Distance to Habitat with Friction**
-   Path: `/usr/local/esoc_c_models/distance-to-hab-with-friction`
-   Repository: [Distance to Habitat with Friction Repository](https://github.com/springinnovate/distance-to-hab-with-friction)
+   * Path: `/usr/local/esoc_c_models/distance-to-hab-with-friction`
+   * Repository: [Distance to Habitat with Friction Repository](https://github.com/springinnovate/distance-to-hab-with-friction)
 
 7. **Pollination Sufficiency**
-   Path: `/usr/local/esoc_c_models/pollination_sufficiency`
-   Repository: [Pollination Sufficiency Repository](https://github.com/springinnovate/pollination_sufficiency)
+   * Path: `/usr/local/esoc_c_models/pollination_sufficiency`
+   * Repository: [Pollination Sufficiency Repository](https://github.com/springinnovate/pollination_sufficiency)
 
 ---
 
