@@ -48,7 +48,7 @@ When running a model, input data should be provided via a local directory. This 
 
 * Input Directory: Replace ./input_data with the path to your local directory containing the input data. Ensure this directory exists and contains all required files.
 * Model Arguments: Each model may require specific input arguments. Refer to the documentation of the respective model for more details.
-* Environment: All models run using the hf39 Mamba Python environment preconfigured in the container, you can inspect how this environment is built by examining the `Dockerfile` in this repository.
+* Environment: All models are run using the `hf39` Mamba Python environment preconfigured in the container, you can inspect how this environment is built by examining the `Dockerfile` in this repository.
 
 ---
 
