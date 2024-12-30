@@ -57,3 +57,5 @@ When running a model, input data should be provided via a local directory. This 
 To run a model, provide the script path and any required input arguments. Example, to see the command line arguments for the SWY model run this command:
 
 `run_container.bat /usr/local/esoc_c_models/swy_global/run_swy_global.py --help`
+
+Note the first time you run `run_container.bat` Docker will build the container locally. This may take some time, but futher runs will reuse the existing container.
