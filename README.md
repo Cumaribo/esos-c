@@ -2,10 +2,9 @@
 
 This repository provides a Docker-based environment to run various ESOC models developed by SPRING and the Natural Capital Project.
 
-
 ## Prerequisites
 
-- Ensure you have [Docker](https://www.docker.com/products/docker-desktop/)installed on your system.
+- Ensure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your system.
 
 ---
 
