@@ -34,21 +34,25 @@ RUN apt-get install -y --no-install-recommends \
     libsqlite3-dev \
     libgdal-dev
 
-RUN git clone https://github.com/springinnovate/swy_global.git ${WORKDIR}/swy_global
-RUN git clone https://github.com/springinnovate/ndr_sdr_global.git ${WORKDIR}/ndr_sdr_global
-RUN git clone https://github.com/springinnovate/downstream-beneficiaries.git ${WORKDIR}/downstream-beneficiaries
-RUN git clone https://github.com/springinnovate/coastal_risk_reduction.git ${WORKDIR}/coastal_risk_reduction
-RUN git clone https://github.com/springinnovate/people_protected_by_coastal_habitat.git ${WORKDIR}/people_protected_by_coastal_habitat
-RUN git clone https://github.com/springinnovate/distance-to-hab-with-friction ${WORKDIR}/distance-to-hab-with-friction
-RUN git clone https://github.com/springinnovate/pollination_sufficiency ${WORKDIR}/pollination_sufficiency
+ARG CACHEBUST=1
 
 RUN git clone https://github.com/springinnovate/ecoshard.git /usr/local/ecoshard && \
     cd /usr/local/ecoshard && \
-    micromamba run -n hf39 pip install .
+    micromamba run -n hf39 pip install . && \
+    git log -1 --format="%h on %ci" > /usr/local/ecoshard.gitversion
 
 RUN git clone https://github.com/springinnovate/inspring.git /usr/local/inspring && \
     cd /usr/local/inspring && \
-    micromamba run -n hf39 pip install .
+    micromamba run -n hf39 pip install . && \
+    git log -1 --format="%h on %ci" > /usr/local/inspring.gitversion
+
+# This shows the timedate of the ecoshard and inspring repos
+RUN echo 'if [ -f "/usr/local/ecoshard.gitversion" ]; then' >> /home/mambauser/.bashrc && \
+    echo '  echo "ecoshard: commit on $(cat /usr/local/ecoshard.gitversion)"' >> /home/mambauser/.bashrc && \
+    echo 'fi' >> /home/mambauser/.bashrc && \
+    echo 'if [ -f "/usr/local/inspring.gitversion" ]; then' >> /home/mambauser/.bashrc && \
+    echo '  echo "inspring: commit on $(cat /usr/local/inspring.gitversion)"' >> /home/mambauser/.bashrc && \
+    echo 'fi' >> /home/mambauser/.bashrc
 
 USER mambauser
 WORKDIR ${WORKDIR}
