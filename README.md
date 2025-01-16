@@ -116,7 +116,7 @@ N_RETENTION={{GLOBAL_WORKSPACE_DIR}}/global_n_retention.tif,{{shard_working_dir}
 
 To run a model, launch the container with the following command:
 
-```bash run_container.bat```
+```run_container.bat```
 
 Then, inside the container, execute a model using its .ini configuration file:
 
