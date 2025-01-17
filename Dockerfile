@@ -10,7 +10,7 @@ COPY environment.yml /tmp/environment.yml
 RUN micromamba create -n hf39 -f /tmp/environment.yml --yes && \
     micromamba clean --all --yes
 
-ARG WORKDIR=/usr/local/esoc_c_models
+ARG WORKDIR=/usr/local/esos_c_models
 ENV WORKDIR=${WORKDIR}
 
 RUN micromamba shell init -s bash -p /opt/conda
